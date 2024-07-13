@@ -1,0 +1,29 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class NumberGuessingGame {
+    public static void main(String[] args) {
+        Random random = new Random();
+        int numberToGuess = random.nextInt(100) + 1;
+        try (Scanner sc = new Scanner(System.in)) {
+            int guess;
+            int count=0;
+            System.out.print("Guess a number between 1 and 100:");
+            
+            while (true) {
+                guess = sc.nextInt();
+                
+                if (guess == numberToGuess) {
+                    System.out.println("Congratulations, you guesses the number!");
+                    break;
+                } else if (guess < numberToGuess) {
+                    System.out.println("Your guess is too low. Try again:");
+                } else {
+                    System.out.println("Your guess is too high. Try again:");
+                }
+                count++;
+            }
+            System.out.println("You got correct answer after "+count+" attempt");
+        }
+    }
+}
